@@ -3,16 +3,15 @@
     <div class="navbar-wrapper">
       <div class="m-header">
         <a href="{{ route('dashboard') }}" class=" p-5 text-primary">
-          <!-- ========   Change your logo from here   ============ -->
-          <img src="{{ asset('assets/img/logo/logo.png') }}" class="img-fluid logo-lg" alt="Mars comm">
+          <img src="{{ asset('images/logo/logo-dark.png') }}" class="img-fluid logo-lg" alt="Adilisha STEM Lab" style="height: 50px; width: 50px;">
         </a>
       </div>
-      {{-- <div class="navbar-content">
+      <div class="navbar-content">
         <ul class="pc-navbar">
           <li class="pc-item">
-            <a href="{{ route('member.index') }}" class="pc-link">
+            <a href="" class="pc-link">
               <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
-              <span class="pc-mtext">Members</span>
+              <span class="pc-mtext">Dashboard</span>
             </a>
           </li>
 
@@ -21,26 +20,26 @@
             <i class="ti ti-dashboard"></i>
           </li>
           <li class="pc-item">
-            <a href="{{ route('executives.index') }}" class="pc-link">
+            <a href="#" class="pc-link">
               <span class="pc-micon"><i class="ti ti-users"></i></span>
-              <span class="pc-mtext">Executives</span>
+              <span class="pc-mtext">Subjects</span>
             </a>
           </li>
           <li class="pc-item">
-            <a href="{{ route('partners.index') }}" class="pc-link">
+                <a href="#" class="pc-link">
               <span class="pc-micon"><i class="ti ti-link"></i></span>
-              <span class="pc-mtext">Partners</span>
+              <span class="pc-mtext">3D Models</span>
             </a>
           </li>
            <li class="pc-item">
-            <a href="{{ route('events.index') }}" class="pc-link">
+            <a href="#" class="pc-link">
               <span class="pc-micon"><i class="ti ti-package"></i></span>
-              <span class="pc-mtext">Events</span>
+              <span class="pc-mtext">Experiments</span>
             </a>
           </li>
 
         </ul>
 
-      </div> --}}
+      </div>
     </div>
   </nav>

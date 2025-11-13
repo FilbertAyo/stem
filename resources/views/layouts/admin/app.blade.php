@@ -49,7 +49,7 @@
         <div class="footer-wrapper container-fluid">
             <div class="row">
                 <div class="col-sm my-1">
-                    <p class="m-0"> Developed by <a href="https://wa.me/255755237692" target="_blank">Filbert Ayo</a></p>
+                    <p class="m-0"> All right reserved <a href="https://wa.me/255755237692" target="_blank">Adilisha STEM Clab</a></p>
                 </div>
                 <div class="col-auto my-1">
                     <ul class="list-inline footer-link mb-0">
