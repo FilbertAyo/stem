@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-between">
                 <div class="logo">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{ asset('client/assets/images/logo/logo.png') }}" alt="Logo">
+                        <img src="{{ asset('images/logo/logo-dark.png') }}" alt="Logo" style='height=50px;width=50px'>
                     </a>
                 </div>
                 <div class="toggler">
@@ -16,7 +16,6 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-title">Menu</li>
 
                 <li class="sidebar-item active">
                     <a href="#" class="sidebar-link">
@@ -25,334 +24,38 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item has-sub">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-stack"></i>
-                        <span>Components</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#">Alert</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Badge</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Breadcrumb</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Button</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Card</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Carousel</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Dropdown</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">List Group</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Modal</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Navs</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Pagination</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Progress</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Spinner</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Tooltip</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item has-sub">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-collection-fill"></i>
-                        <span>Extra Components</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#">Avatar</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Sweet Alert</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Toastify</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Rating</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Divider</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item has-sub">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-grid-1x2-fill"></i>
-                        <span>Layouts</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#">Default Layout</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">1 Column</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Vertical with Navbar</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Horizontal Menu</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-title">Forms &amp; Tables</li>
-
-                <li class="sidebar-item has-sub">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-hexagon-fill"></i>
-                        <span>Form Elements</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#">Input</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Input Group</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Select</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Radio</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Checkbox</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Textarea</a>
-                        </li>
-                    </ul>
-                </li>
-
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                        <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Form Layout</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item has-sub">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-pen-fill"></i>
-                        <span>Form Editor</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#">Quill</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">CKEditor</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Summernote</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">TinyMCE</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-grid-1x2-fill"></i>
-                        <span>Table</span>
+                        <i class="bi bi-cube"></i>
+                        <span>3D Model</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
-                        <span>Datatable</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-title">Extra UI</li>
-
-                <li class="sidebar-item has-sub">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-pentagon-fill"></i>
-                        <span>Widgets</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#">Chatbox</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Pricing</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">To-do List</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item has-sub">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-egg-fill"></i>
-                        <span>Icons</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#">Bootstrap Icons</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Fontawesome</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Dripicons</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item has-sub">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-bar-chart-fill"></i>
-                        <span>Charts</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#">ChartJS</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Apexcharts</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-cloud-arrow-up-fill"></i>
-                        <span>File Uploader</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item has-sub">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-map-fill"></i>
-                        <span>Maps</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#">Google Map</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">JS Vector Map</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-title">Pages</li>
-
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-envelope-fill"></i>
-                        <span>Email Application</span>
+                        <i class="bi bi-square"></i>
+                        <span>2D Experiment</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                        <i class="bi bi-chat-dots-fill"></i>
-                        <span>Chat Application</span>
+                        <i class="bi bi-vr"></i>
+                        <span>VR Experiment</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                        <i class="bi bi-image-fill"></i>
-                        <span>Photo Gallery</span>
+                        <i class="bi bi-question-circle"></i>
+                        <span>Quizez</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                        <i class="bi bi-basket-fill"></i>
-                        <span>Checkout Page</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item has-sub">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-person-badge-fill"></i>
-                        <span>Authentication</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#">Login</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Register</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">Forgot Password</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item has-sub">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-x-octagon-fill"></i>
-                        <span>Errors</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="#">403</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">404</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#">500</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-title">Raise Support</li>
-
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-life-preserver"></i>
-                        <span>Documentation</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-puzzle"></i>
-                        <span>Contribute</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-cash"></i>
-                        <span>Donate</span>
+                        <i class="bi bi-trophy"></i>
+                        <span>Competition</span>
                     </a>
                 </li>
             </ul>
