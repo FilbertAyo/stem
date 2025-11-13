@@ -4,6 +4,7 @@ namespace App\Http\Requests\Auth;
 
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
@@ -29,6 +30,8 @@ class LoginRequest extends FormRequest
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
+            'remember' => ['nullable', 'boolean'],
+            'admin_login' => ['sometimes', 'boolean'],
         ];
     }
 
@@ -41,7 +44,16 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        $validated = $this->validated();
+        $credentials = Arr::only($validated, ['email', 'password']);
+
+        if ($this->isAdminLogin()) {
+            $credentials['role'] = 'admin';
+        }
+
+        $remember = (bool) Arr::get($validated, 'remember', false);
+
+        if (! Auth::attempt($credentials, $remember)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -80,6 +92,20 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+        $validated = $this->validated();
+        $email = Str::lower((string) Arr::get($validated, 'email', ''));
+        $ipAddress = (string) request()->ip();
+
+        return Str::transliterate($email.'|'.$ipAddress);
+    }
+
+    /**
+     * Determine if the login request is targeting the admin area.
+     */
+    protected function isAdminLogin(): bool
+    {
+        $validated = $this->validated();
+
+        return (bool) Arr::get($validated, 'admin_login', false);
     }
 }

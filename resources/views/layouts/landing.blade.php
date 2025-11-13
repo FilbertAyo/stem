@@ -61,7 +61,7 @@
                                 <a href="{{ url('/#about') }}" class="xl">About</a>
                             </li>
                             <li>
-                                <a href="{{ url('/#subjects') }}" class="xl">Subjects / Area of Study</a>
+                                <a href="{{ url('/#subjects') }}" class="xl">Subjects</a>
                             </li>
                             <li>
                                 <a href="{{ url('/#support') }}" class="xl">Support</a>

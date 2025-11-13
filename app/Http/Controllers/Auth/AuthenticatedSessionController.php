@@ -14,8 +14,12 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function create(Request $request): View
     {
+        if ($request->route()?->named('admin.*')) {
+            return view('admin.auth.login');
+        }
+
         return view('auth.login');
     }
 
@@ -28,7 +32,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(
+            $this->resolveRedirectPath($request)
+        );
     }
 
     /**
@@ -36,12 +42,29 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        $user = $request->user();
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect(
+            $user && $user->role === 'admin'
+                ? route('admin.login')
+                : route('login')
+        );
+    }
+
+    protected function resolveRedirectPath(Request $request): string
+    {
+        $user = $request->user();
+
+        if ($user && $user->role === 'admin') {
+            return route('admin.dashboard', absolute: false);
+        }
+
+        return route('dashboard', absolute: false);
     }
 }
