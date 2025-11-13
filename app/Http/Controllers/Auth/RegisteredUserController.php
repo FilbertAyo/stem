@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
-use Illuminate\Validation\Rule;
-use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -21,14 +19,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        $roles = Role::query()
-            ->where('name', '!=', 'admin')
-            ->orderBy('name')
-            ->pluck('name');
-
-        return view('auth.register', [
-            'roles' => $roles,
-        ]);
+        return view('auth.register');
     }
 
     /**
@@ -38,25 +29,19 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $roleNames = Role::query()
-            ->where('name', '!=', 'admin')
-            ->pluck('name')
-            ->toArray();
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role' => ['required', 'string', Rule::in($roleNames)],
+            'role' => ['required', 'string', 'in:teacher,student'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
         ]);
-
-        $user->assignRole($request->role);
 
         event(new Registered($user));
 

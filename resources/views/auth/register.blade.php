@@ -53,19 +53,16 @@
           </div>
 
           <div class="wb">
-            <label class="rc kk wm vb" for="role">Login as</label>
+            <label class="rc kk wm vb" for="role">Account type</label>
             <select
               name="role"
               id="role"
               required
               class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40"
             >
-              <option value="" disabled {{ old('role') ? '' : 'selected' }}>Select Identity</option>
-              @foreach ($roles as $role)
-                <option value="{{ $role }}" {{ old('role') === $role ? 'selected' : '' }}>
-                  {{ ucfirst($role) }}
-                </option>
-              @endforeach
+              <option value="" disabled {{ old('role') ? '' : 'selected' }}>Select account type</option>
+              <option value="student" {{ old('role') === 'student' ? 'selected' : '' }}>Student</option>
+              <option value="teacher" {{ old('role') === 'teacher' ? 'selected' : '' }}>Teacher</option>
             </select>
             @error('role')
               <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -126,53 +123,3 @@
     <!-- ===== SignUp Form End ===== -->
   </main>
 @endsection
-
-@push('head')
-  <style>
-    @keyframes register-spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-    .register-spinner {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 9999px;
-      border: 3px solid rgba(0, 119, 182, 0.25);
-      border-top-color: #0077b6;
-      animation: register-spin 0.75s linear infinite;
-      display: inline-block;
-    }
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
-    }
-  </style>
-@endpush
-
-@push('scripts')
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var registerForm = document.getElementById('register-form');
-      var loadingIndicator = document.getElementById('register-loading-indicator');
-      if (!registerForm || !loadingIndicator) {
-        return;
-      }
-      registerForm.addEventListener('submit', function () {
-        loadingIndicator.style.display = 'flex';
-        var submitButton = registerForm.querySelector('button[type="submit"]');
-        if (submitButton) {
-          submitButton.disabled = true;
-          submitButton.dataset.originalText = submitButton.textContent;
-          submitButton.textContent = 'Processing...';
-        }
-      });
-    });
-  </script>
-@endpush

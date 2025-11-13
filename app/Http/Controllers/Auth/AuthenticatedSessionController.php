@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        $request->session()->regenerate();
+        session()->regenerate();
 
         return redirect()->intended(
             $this->resolveRedirectPath($request)

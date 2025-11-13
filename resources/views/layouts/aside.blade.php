@@ -58,6 +58,16 @@
                         <span>Competition</span>
                     </a>
                 </li>
+
+                <li class="sidebar-item">
+                    <form method="POST" action="{{ route('logout') }}" class="sidebar-link p-0 border-0 bg-transparent">
+                        @csrf
+                        <button type="submit" class="d-flex align-items-center gap-2 w-100 border-0 bg-transparent text-start">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Logout</span>
+                        </button>
+                    </form>
+                </li>
             </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

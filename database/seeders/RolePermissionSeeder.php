@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Role;
 
 class RolePermissionSeeder extends Seeder
 {
@@ -14,36 +13,26 @@ class RolePermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        $roles = [
-            'admin',
-            'teacher',
-            'student',
-        ];
-
-        foreach ($roles as $role) {
-            Role::firstOrCreate(['name' => $role]);
-        }
-
         $admin = User::factory()->create([
             'name' => 'Platform Administrator',
             'email' => 'admin@example.com',
             'password' => Hash::make('password'),
+            'role' => 'admin',
         ]);
-        $admin->assignRole('admin');
 
         $teacher = User::factory()->create([
             'name' => 'Sample Teacher',
             'email' => 'teacher@example.com',
             'password' => Hash::make('password'),
+            'role' => 'teacher',
         ]);
-        $teacher->assignRole('teacher');
 
         $student = User::factory()->create([
             'name' => 'Sample Student',
             'email' => 'student@example.com',
             'password' => Hash::make('password'),
+            'role' => 'student',
         ]);
-        $student->assignRole('student');
     }
 }
 

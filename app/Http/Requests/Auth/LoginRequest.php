@@ -47,13 +47,19 @@ class LoginRequest extends FormRequest
         $validated = $this->validated();
         $credentials = Arr::only($validated, ['email', 'password']);
 
-        if ($this->isAdminLogin()) {
-            $credentials['role'] = 'admin';
-        }
-
         $remember = (bool) Arr::get($validated, 'remember', false);
+        $isAdminLogin = (bool) Arr::get($validated, 'admin_login', false);
 
         if (! Auth::attempt($credentials, $remember)) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'email' => trans('auth.failed'),
+            ]);
+        }
+
+        if ($isAdminLogin && Auth::user()?->role !== 'admin') {
+            Auth::logout();
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -97,15 +103,5 @@ class LoginRequest extends FormRequest
         $ipAddress = (string) request()->ip();
 
         return Str::transliterate($email.'|'.$ipAddress);
-    }
-
-    /**
-     * Determine if the login request is targeting the admin area.
-     */
-    protected function isAdminLogin(): bool
-    {
-        $validated = $this->validated();
-
-        return (bool) Arr::get($validated, 'admin_login', false);
     }
 }
