@@ -9,11 +9,26 @@
     <section class="gj do ir hj sp jr i pg">
       <!-- Hero Images -->
       <div class="xc fn zd/2 2xl:ud-w-187.5 bd 2xl:ud-h-171.5 h q r">
-        {{-- <img src="{{ asset('images/shape-01.svg') }}" alt="shape" class="xc 2xl:ud-block h t -ud-left-[10%] ua" />
-        <img src="{{ asset('images/shape-02.svg') }}" alt="shape" class="xc 2xl:ud-block h u p va" />
-        <img src="{{ asset('images/shape-03.svg') }}" alt="shape" class="xc 2xl:ud-block h v w va" /> --}}
         <img src="{{ asset('images/shape-04.svg') }}" alt="shape" class="h q r" />
-        <img src="{{ asset('images/heart-heo.png') }}" alt="heartbeat" class="h q r ua" />
+        <model-viewer
+          src="{{ asset('images/heart.glb') }}"
+          alt="Interactive heart model"
+          auto-rotate
+          camera-controls
+          touch-action="pan-y"
+          shadow-intensity="1"
+          class="h q r"
+          style="width: 100%; height: 100%; min-height: 420px;"
+        ></model-viewer>
+
+        @once
+          @push('scripts')
+            <script
+              type="module"
+              src="https://unpkg.com/@google/model-viewer@3.3.0/dist/model-viewer.min.js"
+            ></script>
+          @endpush
+        @endonce
       </div>
 
       <!-- Hero Content -->
@@ -79,9 +94,7 @@
         </div>
       </div>
     </section>
-    <!-- ===== Small Features End ===== -->
 
-    <!-- ===== About Start ===== -->
     <section id="about" class="ji gp uq 2xl:ud-py-35 pg">
       <div class="bb ze ki xn wq">
         <div class="tc wf gg qq">
@@ -357,9 +370,8 @@
         </div>
       </div>
     </section>
-    <!-- ===== Services End ===== -->
 
-    <!-- ===== Pricing Table Start ===== -->
+
     <section class="i pg fh rm ji gp uq">
       <!-- Bg Shapes -->
       <img src="{{ asset('images/shape-06.svg') }}" alt="Shape" class="h aa y" />

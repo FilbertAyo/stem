@@ -14,7 +14,43 @@
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo/favicon.png') }}" media="(prefers-color-scheme: dark)">
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link rel="stylesheet" href="{{ asset('client/front-end/style.css') }}">
-        <base href="{{ asset('client/front-end') }}/">
+        <base href="{{ asset('client/front-end/') }}">
+        <style>
+            .text-red-600,
+            .text-danger {
+                color: #dc2626 !important;
+            }
+            .dark .text-red-600,
+            .dark .text-danger {
+                color: #f87171 !important;
+            }
+            .text-green-600,
+            .text-success {
+                color: #16a34a !important;
+            }
+            .dark .text-green-600,
+            .dark .text-success {
+                color: #4ade80 !important;
+            }
+            .mk,
+            a.mk:link,
+            a.mk:visited {
+                color: #0077b6 !important;
+            }
+            .gh,
+            .sh,
+            .lk.gh,
+            .vd.gh {
+                background-color: #0077b6 !important;
+            }
+            .gh:hover,
+            .sh:hover {
+                background-color: #005f92 !important;
+            }
+            .wh {
+                fill: #0077b6 !important;
+            }
+        </style>
         @stack('head')
     </head>
     <body
@@ -31,8 +67,8 @@
             <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i">
                 <div class="vd to/4 tc wf yf">
                     <a href="{{ url('/') }}">
-                        <img class="om" src="{{ asset('images/logo/logo-dark.png') }}" alt="{{ config('app.name') }} Logo" style="height:50px; width:50px;"/>
-                        <img class="xc nm" src="{{ asset('images/logo/logo-white.png') }}" alt="{{ config('app.name') }} Logo" style="height:50px; width:50px;"/>
+                        <img class="om" src="{{ asset('images/logo/logo-dark.png') }}" alt="{{ config('app.name') }} Logo" style="height:50px;"/>
+                        <img class="xc nm" src="{{ asset('images/logo/logo-white.png') }}" alt="{{ config('app.name') }} Logo" style="height:50px;"/>
                     </a>
                     <button class="po rc" @click="navigationOpen = !navigationOpen">
                         <span class="rc i pf re pd">
@@ -144,8 +180,8 @@
                     <div class="tc uf ap gg fp">
                         <div class="animate_top zd/2 to/4">
                             <a href="{{ url('/') }}">
-                                <img src="{{ asset('images/logo/logo-dark.png') }}" alt="{{ config('app.name') }} Logo" class="om" style="height:50px; width:50px;"/>
-                                <img src="{{ asset('images/logo/logo-white.png') }}" alt="{{ config('app.name') }} Logo" class="xc nm" style="height:50px; width:50px;"/>
+                                <img src="{{ asset('images/logo/logo-dark.png') }}" alt="{{ config('app.name') }} Logo" class="om" style="height:50px;"/>
+                                <img src="{{ asset('images/logo/logo-white.png') }}" alt="{{ config('app.name') }} Logo" class="xc nm" style="height:50px;"/>
                             </a>
                             <p class="lc fb">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             <ul class="tc wf cg">

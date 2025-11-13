@@ -1,27 +1,45 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
-    </div>
+@extends('layouts.landing')
 
-    <form method="POST" action="{{ route('password.confirm') }}">
-        @csrf
+@section('title', 'Confirm Password | ' . config('app.name'))
+@section('page', 'confirm-password')
 
-        <!-- Password -->
-        <div>
-            <x-input-label for="password" :value="__('Password')" />
+@section('content')
+  <main>
+    <section class="i pg fh rm ki xn vq gj qp gr hj rp hr">
+      <img src="{{ asset('images/shape-06.svg') }}" alt="Shape" class="h j k" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+      <div class="animate_top bb af i va sg hh sm vk xm yi _n jp hi ao kp">
+        <span class="rc h r s zd/2 od zg gh"></span>
+        <span class="rc h r q zd/2 od xg mh"></span>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+        <p class="sj hk xj rj ob">
+          This is a secure area of the application. Please confirm your password before continuing.
+        </p>
 
-        <div class="flex justify-end mt-4">
-            <x-primary-button>
-                {{ __('Confirm') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+        <form class="sb mt-6" method="POST" action="{{ route('password.confirm') }}">
+          @csrf
+
+          <div class="wb">
+            <label class="rc kk wm vb" for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="**************"
+              required
+              autocomplete="current-password"
+              class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40"
+            />
+            @error('password')
+              <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+            @enderror
+          </div>
+
+          <button type="submit" class="vd rj ek rc rg gh lk ml il _l gi hi">
+            Confirm
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+@endsection

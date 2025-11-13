@@ -16,7 +16,7 @@
         <span class="rc h r q zd/2 od xg mh"></span>
 
 
-        <form class="sb" method="POST" action="{{ route('register') }}">
+        <form class="sb" method="POST" action="{{ route('register') }}" id="register-form">
           @csrf
           <div class="wb">
             <label class="rc kk wm vb" for="name">Full name</label>
@@ -48,6 +48,26 @@
               class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40"
             />
             @error('email')
+              <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+            @enderror
+          </div>
+
+          <div class="wb">
+            <label class="rc kk wm vb" for="role">Login as</label>
+            <select
+              name="role"
+              id="role"
+              required
+              class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40"
+            >
+              <option value="" disabled {{ old('role') ? '' : 'selected' }}>Select Identity</option>
+              @foreach ($roles as $role)
+                <option value="{{ $role }}" {{ old('role') === $role ? 'selected' : '' }}>
+                  {{ ucfirst($role) }}
+                </option>
+              @endforeach
+            </select>
+            @error('role')
               <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
             @enderror
           </div>
@@ -85,6 +105,17 @@
             Sign Up
           </button>
 
+          <div
+            id="register-loading-indicator"
+            class="mt-6"
+            style="display: none; align-items: center; justify-content: center; gap: 0.75rem;"
+            role="status"
+            aria-live="polite"
+          >
+            <span class="register-spinner" aria-hidden="true"></span>
+            <span class="sr-only">Creating your account...</span>
+          </div>
+
           <p class="sj hk xj rj ob">
             Already have an account?
             <a class="mk" href="{{ route('login') }}"> Sign In </a>
@@ -95,3 +126,53 @@
     <!-- ===== SignUp Form End ===== -->
   </main>
 @endsection
+
+@push('head')
+  <style>
+    @keyframes register-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    .register-spinner {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      border: 3px solid rgba(0, 119, 182, 0.25);
+      border-top-color: #0077b6;
+      animation: register-spin 0.75s linear infinite;
+      display: inline-block;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+  </style>
+@endpush
+
+@push('scripts')
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var registerForm = document.getElementById('register-form');
+      var loadingIndicator = document.getElementById('register-loading-indicator');
+      if (!registerForm || !loadingIndicator) {
+        return;
+      }
+      registerForm.addEventListener('submit', function () {
+        loadingIndicator.style.display = 'flex';
+        var submitButton = registerForm.querySelector('button[type="submit"]');
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.dataset.originalText = submitButton.textContent;
+          submitButton.textContent = 'Processing...';
+        }
+      });
+    });
+  </script>
+@endpush

@@ -1,25 +1,53 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-    </div>
+@extends('layouts.landing')
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@section('title', 'Forgot Password | ' . config('app.name'))
+@section('page', 'forgot-password')
 
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
+@section('content')
+  <main>
+    <section class="i pg fh rm ki xn vq gj qp gr hj rp hr">
+      <img src="{{ asset('images/shape-06.svg') }}" alt="Shape" class="h j k" />
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+      <div class="animate_top bb af i va sg hh sm vk xm yi _n jp hi ao kp">
+        <span class="rc h r s zd/2 od zg gh"></span>
+        <span class="rc h r q zd/2 od xg mh"></span>
+
+        <div class="sj hk xj rj ob">
+          Forgot your password? No problem. Enter your email address and we will send you a password reset link.
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+        @if(session('status'))
+          <p class="mt-4 text-sm text-green-600">
+            {{ session('status') }}
+          </p>
+        @endif
+
+        <form class="sb mt-6" method="POST" action="{{ route('password.email') }}">
+          @csrf
+
+          <div class="wb">
+            <label class="rc kk wm vb" for="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value="{{ old('email') }}"
+              placeholder="you@example.org"
+              required
+              autofocus
+              autocomplete="email"
+              class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40"
+            />
+            @error('email')
+              <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+            @enderror
+          </div>
+
+          <button type="submit" class="vd rj ek rc rg gh lk ml il _l gi hi">
+            Email Password Reset Link
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+@endsection
