@@ -53,14 +53,14 @@
           </div>
 
           <div class="wb">
-            <label class="rc kk wm vb" for="role">Account type</label>
+            <label class="rc kk wm vb" for="role">Who are you?</label>
             <select
               name="role"
               id="role"
               required
               class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40"
             >
-              <option value="" disabled {{ old('role') ? '' : 'selected' }}>Select account type</option>
+              <option value="" disabled {{ old('role') ? '' : 'selected' }}>Select identity</option>
               <option value="student" {{ old('role') === 'student' ? 'selected' : '' }}>Student</option>
               <option value="teacher" {{ old('role') === 'teacher' ? 'selected' : '' }}>Teacher</option>
             </select>
