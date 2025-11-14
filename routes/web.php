@@ -49,6 +49,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::get('3d/{model3d}', [Model3dController::class, 'show'])->name('3d.show');
         Route::get('3d/{model3d}/edit', [Model3dController::class, 'edit'])->name('3d.edit');
         Route::put('3d/{model3d}', [Model3dController::class, 'update'])->name('3d.update');
+        Route::delete('3d/{model3d}', [Model3dController::class, 'destroy'])->name('3d.destroy');
     });
 });
 

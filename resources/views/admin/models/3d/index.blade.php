@@ -50,6 +50,18 @@
                                                    title="Edit">
                                                     <i class="ti ti-edit"></i> Edit
                                                 </a>
+                                                <form action="{{ route('admin.models.3d.destroy', $model) }}"
+                                                      method="POST"
+                                                      class="d-inline"
+                                                      onsubmit="return confirm('Are you sure you want to delete this 3D model? This will also delete the GLB file and thumbnail. This action cannot be undone.');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                            class="btn btn-sm btn-danger"
+                                                            title="Delete">
+                                                        <i class="ti ti-trash"></i> Delete
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>

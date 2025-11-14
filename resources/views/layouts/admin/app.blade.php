@@ -100,6 +100,8 @@
         font_change("Public-Sans");
     </script>
 
+    @stack('scripts')
+
 </body>
 
 </html>

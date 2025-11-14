@@ -2,7 +2,7 @@
 <nav class="pc-sidebar">
     <div class="navbar-wrapper">
       <div class="m-header">
-        <a href="{{ route('admin.dashboard') }}" class=" p-5 text-primary">
+        <a href="{{ route('admin.dashboard') }}" class="text-primary" style="padding: 0px 26px;">
           <img src="{{ asset('images/logo/logo-dark.png') }}" class="img-fluid logo-lg" alt="Adilisha STEM Lab">
         </a>
       </div>

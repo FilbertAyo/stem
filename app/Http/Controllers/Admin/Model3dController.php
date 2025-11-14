@@ -38,15 +38,35 @@ class Model3dController extends Controller
         $validated = $request->validate([
             'subject_id' => ['required', 'exists:subjects,id'],
             'name' => ['required', 'string', 'max:255'],
-            'file' => ['required', 'file', 'mimes:glb', 'max:102400'], // Max 100MB for GLB files
+            'file' => [
+                'required',
+                'file',
+                'max:102400', // Max 100MB for GLB files
+                function ($attribute, $value, $fail) {
+                    if ($value && $value->isValid()) {
+                        $extension = strtolower($value->getClientOriginalExtension());
+                        
+                        // Check extension - this is the most reliable check for GLB files
+                        if ($extension !== 'glb') {
+                            $fail('The file must be a GLB file.');
+                        }
+                    }
+                },
+            ],
             'thumbnail' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:5120'], // Max 5MB
             'description' => ['nullable', 'string'],
             'tags' => ['nullable', 'string', 'max:500'],
         ]);
 
-        // Handle GLB file upload
+        // Handle GLB file upload - preserve .glb extension
         if ($request->hasFile('file')) {
-            $filePath = $request->file('file')->store('models/3d', 'public');
+            $file = $request->file('file');
+            $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+            // Ensure .glb extension
+            if (!str_ends_with(strtolower($filename), '.glb')) {
+                $filename .= '.glb';
+            }
+            $filePath = $file->storeAs('models/3d', $filename, 'public');
             $validated['file'] = $filePath;
         }
 
@@ -88,19 +108,40 @@ class Model3dController extends Controller
         $validated = $request->validate([
             'subject_id' => ['required', 'exists:subjects,id'],
             'name' => ['required', 'string', 'max:255'],
-            'file' => ['nullable', 'file', 'mimes:glb', 'max:102400'], // Max 100MB for GLB files
+            'file' => [
+                'nullable',
+                'file',
+                'max:102400', // Max 100MB for GLB files
+                function ($attribute, $value, $fail) {
+                    if ($value && $value->isValid()) {
+                        $extension = strtolower($value->getClientOriginalExtension());
+                        
+                        // Check extension
+                        if ($extension !== 'glb') {
+                            $fail('The file must be a GLB file.');
+                            return;
+                        }
+                    }
+                },
+            ],
             'thumbnail' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:5120'], // Max 5MB
             'description' => ['nullable', 'string'],
             'tags' => ['nullable', 'string', 'max:500'],
         ]);
 
-        // Handle GLB file upload
+        // Handle GLB file upload - preserve .glb extension
         if ($request->hasFile('file')) {
             // Delete old file if exists
             if ($model3d->file && Storage::disk('public')->exists($model3d->file)) {
                 Storage::disk('public')->delete($model3d->file);
             }
-            $filePath = $request->file('file')->store('models/3d', 'public');
+            $file = $request->file('file');
+            $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+            // Ensure .glb extension
+            if (!str_ends_with(strtolower($filename), '.glb')) {
+                $filename .= '.glb';
+            }
+            $filePath = $file->storeAs('models/3d', $filename, 'public');
             $validated['file'] = $filePath;
         } else {
             // Keep existing file if not updating
@@ -124,5 +165,27 @@ class Model3dController extends Controller
 
         return redirect()->route('admin.models.3d.index')
             ->with('success', '3D model updated successfully.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Model3d $model3d): RedirectResponse
+    {
+        // Delete GLB file if exists
+        if ($model3d->file && Storage::disk('public')->exists($model3d->file)) {
+            Storage::disk('public')->delete($model3d->file);
+        }
+
+        // Delete thumbnail if exists
+        if ($model3d->thumbnail && Storage::disk('public')->exists($model3d->thumbnail)) {
+            Storage::disk('public')->delete($model3d->thumbnail);
+        }
+
+        // Delete the model record
+        $model3d->delete();
+
+        return redirect()->route('admin.models.3d.index')
+            ->with('success', '3D model and associated files deleted successfully.');
     }
 }
