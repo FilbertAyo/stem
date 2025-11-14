@@ -113,9 +113,10 @@
                                     @change="darkMode = !darkMode"
                                     class="pf vd yc uk h r za ab"
                                 />
+                                <!-- Sun Icon (shown in dark mode to switch to light) -->
                                 <svg
                                     :class="{ 'wn' : page === 'home', 'xh' : page === 'home' && stickyMenu }"
-                                    class="th om"
+                                    class="xc sk nm"
                                     width="25"
                                     height="25"
                                     viewBox="0 0 25 25"
@@ -127,8 +128,22 @@
                                         fill=""
                                     />
                                 </svg>
-                                <img class="xc nm" src="{{ asset('images/icon-moon.svg') }}" alt="Toggle Dark Mode" />
-                            </label>
+                                <!-- Moon Icon (shown in light mode to switch to dark) -->
+                                <svg
+                                    :class="{ 'wn' : page === 'home', 'xh' : page === 'home' && stickyMenu }"
+                                    class="th wl om"
+                                    width="25"
+                                    height="25"
+                                    viewBox="0 0 25 25"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M21.6364 12.8182C21.6364 13.1818 21.5455 13.5455 21.3636 13.8182C21.1818 14.1818 20.9091 14.4545 20.5455 14.6364C20.1818 14.8182 19.8182 14.9091 19.4545 14.9091C19.0909 14.9091 18.7273 14.8182 18.3636 14.6364C18 14.4545 17.7273 14.1818 17.5455 13.8182C17.3636 13.5455 17.2727 13.1818 17.2727 12.8182C17.2727 12.4545 17.3636 12.0909 17.5455 11.8182C17.7273 11.4545 18 11.1818 18.3636 11C18.7273 10.8182 19.0909 10.7273 19.4545 10.7273C19.8182 10.7273 20.1818 10.8182 20.5455 11C20.9091 11.1818 21.1818 11.4545 21.3636 11.8182C21.5455 12.0909 21.6364 12.4545 21.6364 12.8182ZM16.3636 12.8182C16.3636 15.3636 14.5455 17.4545 12 18.1818C9.45455 18.9091 6.81818 17.7273 5.18182 15.6364C3.54545 13.5455 3 10.9091 3.72727 8.36364C4.45455 5.81818 6.54545 4 9.09091 3.27273C10.0909 3 11.1818 2.90909 12.1818 3.09091C12.7273 3.18182 12.9091 3.81818 12.4545 4.18182C11.7273 4.72727 11.1818 5.54545 11 6.36364C10.7273 7.45455 10.8182 8.63636 11.2727 9.63636C11.7273 10.6364 12.4545 11.3636 13.4545 11.8182C14.4545 12.2727 15.6364 12.3636 16.7273 12.0909C17.1818 12 17.8182 12.1818 17.9091 12.7273C18 12.8182 18 12.8182 17.9091 13.3636C17.7273 14.1818 17.1818 14.8182 16.3636 15.2727C16.3636 14.4545 16.2727 13.6364 16.3636 12.8182Z"
+                                        fill=""
+                                    />
+                                </svg>
+                           </label>
                         </div>
                         <button
                             type="button"
@@ -183,7 +198,7 @@
                                 <img src="{{ asset('images/logo/logo-dark.png') }}" alt="{{ config('app.name') }} Logo" class="om" style="height:50px;"/>
                                 <img src="{{ asset('images/logo/logo-white.png') }}" alt="{{ config('app.name') }} Logo" class="xc nm" style="height:50px;"/>
                             </a>
-                            <p class="lc fb">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p class="lc fb">Adilisha is a non-profit organization that empowers girls in STEM education across Tanzania.</p>
                             <ul class="tc wf cg">
                                 <li>
                                     <a href="#!">

@@ -3,7 +3,7 @@
     <div class="navbar-wrapper">
       <div class="m-header">
         <a href="{{ route('admin.dashboard') }}" class=" p-5 text-primary">
-          <img src="{{ asset('images/logo/logo-dark.png') }}" class="img-fluid logo-lg" alt="Adilisha STEM Lab" style="height: 50px; width: 50px;">
+          <img src="{{ asset('images/logo/logo-dark.png') }}" class="img-fluid logo-lg" alt="Adilisha STEM Lab">
         </a>
       </div>
       <div class="navbar-content">
